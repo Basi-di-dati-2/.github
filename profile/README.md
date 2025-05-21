@@ -1,6 +1,12 @@
 # 🎮 PLAYWISE 🎮
 PlayWise è una piattaforma per la scoperta e la valutazione di videogiochi, arricchita da un sistema di raccomandazione personalizzata basato su tecniche di Machine Learning. Il progetto è stato sviluppato come caso di studio accademico per esplorare l'integrazione di Database NoSQL, AI, MLOps e SE4AI in un contesto applicativo reale.
 
+## 📚 Indice 📚
+- [Overview del Progetto](#-overview-del-progetto-)
+- [Tecnologie utilizzate](#-tecnologie-utilizzate)
+- [Microservizi](#-microservizi)
+- [Installazione](#-installazione-)
+- [Autori](#-autori-)
 
 
 ## 🚀 Overview del Progetto 🚀 
@@ -62,7 +68,7 @@ git clone https://github.com/Basi-di-dati-2/nomeRepository.git
 ### 🧱 Build dei microservizi Java
 Utilizzare Maven per effettuare la build dei microservizi Java. Per ogni microservizio java, posizionarsi all`interno della root (cartella che contiene pom.xml) ed utilizzare il seguente comando:
 ```bash
-mvn clean install
+mvn clean package
 ```
 
 ### 🐳 Avvio dei Container
@@ -78,6 +84,14 @@ Una volta che tutti i container docker saranno avviati, accedere alla home di Pl
 ```bash
 http://localhost:5173 
 ```
+È possibile utilizzare i seguenti accounte già esistenti:
+| Username | Password | Ruolo |
+|---------------|------------|-------------|
+| AmadouIraklidis | $2b$12$ycnOBZMXIdxHD43tQFoE3uLpSVD3ii879VMsZtShC8vCtcdQd8aGW | ADMIN |
+| Radlerdani | $2b$12$ycnOBZMXIdxHD43tQFoE3uLpSVD3ii879VMsZtShC8vCtcdQd8aGW | USER |
+| Valkillmore | $2b$12$ycnOBZMXIdxHD43tQFoE3uLpSVD3ii879VMsZtShC8vCtcdQd8aGW | USER |
+| Doodahday66 | $2b$12$ycnOBZMXIdxHD43tQFoE3uLpSVD3ii879VMsZtShC8vCtcdQd8aGW | USER |
+| Ibanez89 | $2b$12$ycnOBZMXIdxHD43tQFoE3uLpSVD3ii879VMsZtShC8vCtcdQd8aGW | USER |
 
 ### 🔍 Configurazione Grafana (OPZIONALE)
 Per utilizzare Grafana è necessario configurare la dashboard. Per fare ciò, accedere al seguente link:
@@ -96,3 +110,20 @@ http://prometheus:9090
 Una volta salvate le impostazione e testato il collegamento, andare in **dashboard** ed importare il file JSON con la configurazione: [grafana_dashboard.json](https://github.com/FrancescoPinto02/SE4AI-Pinto-Torino/blob/main/monitoring/grafana_dashboard.json) 
 
 > ⚠️ Nel caso in cui i pannelli della dashboard mostrassero un errore, provare ad editarli e salvare il tutto.
+
+## 👨‍💻 Autori 👨‍💻
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/FrancescoTorino1999.png" width="100" alt="Francesco Maria Torino"/><br/>
+      <sub><b>Francesco Maria Torino</b></sub><br/>
+      <a href="https://github.com/FrancescoTorino1999">GitHub</a>
+    </td>
+    <td align="center">
+      <img src="https://github.com/FrancescoPinto02.png" width="100" alt="Francesco Alessandro Pinto"/><br/>
+      <sub><b>Francesco Alessandro Pinto</b></sub><br/>
+      <a href="https://github.com/FrancescoPinto02">GitHub</a>
+    </td>
+  </tr>
+</table>
+
