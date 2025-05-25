@@ -1,0 +1,120 @@
+version: '3.9'
+
+services:
+  discovery-server:
+    build: ./discovery_server/discovery-server
+    container_name: discovery-server
+    ports:
+      - "8761:8761"
+    networks:
+      - games-network
+
+  api-gateway:
+    build: ./api-gateway/api-gateway
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - discovery-server
+    restart: on-failure
+    networks:
+      - games-network
+
+  review-service:
+    build: ./review_project/backend/review_project
+    container_name: review-service
+    ports:
+      - "8082:8082"
+      - "5007:5007"  # debug remoto
+    depends_on:
+      - discovery-server
+    restart: on-failure
+    networks:
+      - games-network
+
+  games-service:
+    build: ./Basi-di-dati-2-Pinto-Torino/backend/games-project
+    container_name: games-service
+    ports:
+      - "8081:8081"
+      - "5010:5010"  # debug remoto
+    depends_on:
+      - discovery-server
+    restart: on-failure
+    networks:
+      - games-network
+
+  user-service:
+    build: ./user_project/backend/user-project
+    container_name: user-service
+    ports:
+      - "8083:8083"
+      - "5006:5006"  # debug remoto
+    depends_on:
+      - discovery-server
+    restart: on-failure
+    networks:
+      - games-network
+
+  admin-service:
+    build: ./admin-project/backend/admin-project
+    container_name: admin-service
+    ports:
+      - "8084:8084"
+      - "5008:5008"  # debug remoto
+    depends_on:
+      - discovery-server
+    restart: on-failure
+    networks:
+      - games-network
+
+  recommendation-service:
+    image: francescopinto02/se4ai-recommender:latest
+    container_name: recommendation-service
+    ports:
+      - "8000:8000"
+    command: uvicorn src.app:app --reload --host 0.0.0.0 --port 8000
+    depends_on:
+      - discovery-server
+    restart: on-failure
+    networks:
+      - games-network
+
+  frontend:
+    build: ./play-wise-FE/frontend/react-project
+    container_name: frontend
+    ports:
+      - "5173:5173"
+    command: npm run dev -- --host 0.0.0.0
+    restart: on-failure
+    networks:
+      - games-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - "9090:9090"
+    networks:
+      - games-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - games-network
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
+volumes:
+  grafana-storage:
+
+networks:
+  games-network:
+    driver: bridge
