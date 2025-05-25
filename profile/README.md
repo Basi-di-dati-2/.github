@@ -72,7 +72,7 @@ mvn clean package
 ```
 
 ### 🐳 Avvio dei Container
-Scaricare ed inserire il file docker-compose all`interno della cartella principale ed utilizzare il seguente comando:
+Scaricare ed inserire il file [docker-compose](https://github.com/Basi-di-dati-2/.github/blob/main/docker-compose.yml) all`interno della cartella principale ed utilizzare il seguente comando:
 ```bash
 docker-compose up --build
 ```
